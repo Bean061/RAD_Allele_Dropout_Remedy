@@ -1,4 +1,4 @@
-# RAD Allele Dropout Remedy (RADADOR)
+# RAD-seq Allele Dropout Remedy (RADADOR)
 A Pipeline Using Transcriptome or Genome Sequences to Obtain More Shared Loci for Outgroup Species in RAD-Seq
 
 by Wenbin Zhou
