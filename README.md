@@ -86,11 +86,12 @@ optional arguments:
 
 ## Output
 * partition.nex
+  
   partition file result for your M50 data.
   
 * split_genes/
 
-  Gene alignments for each locus from your M50 data.
+  Contains gene alignments without adding any new outgroup sequences.
   
 * BLAST/
 
@@ -98,11 +99,11 @@ optional arguments:
   
 * added_outgroup_genes/
   
-  Add the transcriptome data to RAD-seq according to BLAST result, and move the genes from split_genes/ to this folder.
+  Contains gene seqeunces with new outgroup sequences added, but not aligned.
 
 * aligned_loci/
   
-  Align the genes from added_outgroup_genes/
+  Contains gene alignments with new outgroup sequences added.
 
 Finally you can concatenate aligned_loci/ and split_genes/ as the final matrix for phylogenetic analyses.
  
