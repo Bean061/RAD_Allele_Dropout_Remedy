@@ -1,4 +1,4 @@
-# RAD Allele Dropout Remedy
+# RAD Allele Dropout Remedy (RADADOR)
 A Pipeline Using Transcriptome or Genome Sequences to Obtain More Shared Loci for Outgroup Species in RAD-Seq
 
 by Wenbin Zhou
@@ -52,15 +52,16 @@ It includes six steps as follows:
 ## Usage
 
   This script is used to recapture loci in RAD-seq outgroup from RNA-seq or Genome data. It requires .loci file from ipyrad, .phy file from ipyrad, .fasta file from RNA-seq (Trinity) or Genomic data. You also need to define one outgroup name and output partition file name. '-i', '-o', '-iph', '-itr', '-og' are required arguments. The default output file will be generated at current working dirctory.
+  Make sure your working dirctory contain all the RADADOR python scripts.
   
-  To check all parameters in PPD.py using:
+  To check all parameters in RADADOR.py using:
 
   ```python
-  python PPD.py -h
+  python RADADOR.py -h
   ```
   
 ```python
-usage: RORNA.py [-h] [-i INPUT_DIR] [-o OUTPUT_NAME] [-iph INPUT_PHYLIP_DIR]
+usage: RADADOR.py [-h] [-i INPUT_DIR] [-o OUTPUT_NAME] [-iph INPUT_PHYLIP_DIR]
                 [-itr INPUT_TRANS_DIR] [-og OG_NAME]
 
 
