@@ -6,7 +6,7 @@ by Wenbin Zhou
 This pipeline can be applied to RAD-seq experiments missing closely related outgroup, largely increasing the number of shared loci in outgroup. It helps obtain more informative sites in outgroups, improving downstream phylogenetic analysis.
 
 ## Prerequisites:
-Run [ipyrad](https://ipyrad.readthedocs.io/en/latest/) to get the .loci file and .phy file as the input for this pipeline.
+Run [ipyrad](https://ipyrad.readthedocs.io/en/latest/) for RAD-seq data to get the .loci file and .phy file as the input for this pipeline.
 
 
 ## python Dependencies
