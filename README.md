@@ -86,7 +86,7 @@ optional arguments:
 
 example:
   ```
-  cd example
+  cd ./example/
   ```
   
   ```python
@@ -115,7 +115,11 @@ example:
   Contains gene alignments with new outgroup sequences added.
 
 Finally you can concatenate aligned_loci/ and split_genes/ as the final matrix for phylogenetic analyses.
- 
+
+
 ## Citation
 
 * Zhou et al. in prep.
+
+## Acknowledgements
+ The example data is partially from Du, Zhi-Yuan, A. J. Harris, and Qiu-Yun Jenny Xiang. "Phylogenomics, co-evolution of ecological niche and morphology, and historical biogeography of buckeyes, horsechestnuts, and their relatives (Hippocastaneae, Sapindaceae) and the value of RAD-Seq for deep evolutionary inferences back to the Late Cretaceous." Molecular Phylogenetics and Evolution 145 (2020): 106726.
