@@ -84,6 +84,15 @@ optional arguments:
                         define your outgroup name.
 ```
 
+example:
+  ```
+  cd example
+  ```
+  
+  ```python
+  python3 ../RADADOR.py -i nr50.loci -o partition.nex -iph nr50.phy -itr trinity_Acer_rubrum.Trinity.fasta -og Acer
+  ```
+
 ## Output
 * partition.nex
   
