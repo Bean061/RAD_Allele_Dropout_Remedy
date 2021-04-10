@@ -1,3 +1,11 @@
+#### plese cite 
+# Zhou et al., in review.
+# The goal of this pipeline can help recover a good amount of dropped RAD-seq loci in outgroups due to
+# the allele dropout (ADO) using either whole genome or transcriptomes.
+
+#### Any questions, please contact Wenbin Zhou. wzhou10@ncsu.edu
+
+#### python modules ####
 import os
 import argparse
 import pandas as pd
@@ -37,17 +45,21 @@ def main():
     f = open("RADADOR.log", "w")
     sys.stdout = f
 
-
+#### s1: the "Loci2partition" function in “Loci2partition_nex” transfers the loci output file (from ipyrad) into partition nexus file.
     if args.input_dir and args.output_name and args.og_name:
         input_filename = os.path.realpath(args.input_dir)
         output_filename = os.path.realpath(args.output_name)
 
         Loci2partition(input_filename, output_filename)
 
+#### s2: according to the partition file, the concatenated gene phylip output file (from ipyrad) were divided into 
+#### different genes alignments by the "con2genes" function in “Concatenated2gene_phylip”.
         if args.input_phylip_dir:
             input_phylip = os.path.realpath(args.input_phylip_dir)
             con2genes(output_filename, input_phylip)
 
+
+#### s3: combined all gene sequences from all individual into one master fasta file using the “combRADseq” function.
         output_directory = os.path.dirname(output_filename)
         if os.path.isdir(output_directory) == True:
             output_genes_file = output_directory +"/split_genes"
@@ -57,14 +69,19 @@ def main():
 
                 input_RNA_seq = os.path.realpath(args.input_trans_dir)
 
+#### s4:use transcriptomic Trinity contigs result as the reference and BLAST the RAD-seq master fasta file from s3 
+#### with the reference via the “blast_py” function in "BLAST".
                 blast_py(input_RNA_seq)
 
                 blast_output = output_directory + "/BLAST/result.txt"
+                
+#### s5: according to the blast result, the matching transcriptomic sequences were obtained to each corresponding 
+#### locus via the “addRNA2RAD” function in "Add_RNA_2_RAD".
                 if os.path.isfile(blast_output) == True:
                     print("step5")
                     addRNA2RAD(args.og_name, input_RNA_seq, blast_output, output_genes_file)
 
-
+#### s6: realign the genes with new outgroup sequences using “mafft_genes” function.
             added_gene_folder = output_directory + "/added_outgroup_genes"
             mafft_genes(added_gene_folder)
 

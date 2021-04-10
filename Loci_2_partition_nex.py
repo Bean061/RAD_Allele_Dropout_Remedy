@@ -1,3 +1,7 @@
+### s1: the function “Loci2partition” transfers the loci output file (from ipyrad) into partition nexus file.
+
+#### Any questions, please contact Wenbin Zhou. wzhou10@ncsu.edu
+
 # -*- coding:utf-8 -*-
 import argparse
 import os
@@ -11,6 +15,7 @@ def Loci2partition(ipyrad_locifile, output_partition):
     a = 0
     start_num = 1
 
+    ### extract each locus length and name to generate a nexus partition file.
     f1 = open(ipyrad_locifile, 'r')
     for n in range(s):
         text = f1.readline()

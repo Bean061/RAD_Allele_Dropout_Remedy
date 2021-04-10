@@ -1,3 +1,9 @@
+### s5: according to the blast result, the matching transcriptomic sequences were obtained 
+### to each corresponding locus via the “addRNA2RAD” function.
+
+#### Any questions, please contact Wenbin Zhou. wzhou10@ncsu.edu
+
+# -*- coding:utf-8 -*-
 import pandas as pd
 from Bio import SeqIO
 import argparse
@@ -13,17 +19,18 @@ def addRNA2RAD(outgroup_name, transcriptome, blast_result_txt, split_genes):
 
     data = pd.read_csv(blast_result_txt, sep= '\t', header=None)
     print(data)
-    #
-    # #create dataframe
+
+    #create dataframe for reading the results from BLAST output.
     df=pd.DataFrame(data, index=None, columns=None)
     type(df)
-    # #print(df)
-    #
-    #name column to target it for split
+    # print(df)
+    
+    # rename the column 0
     df = df.rename(columns={0:"gene_name"})
     print(df)
     gene_name = ""
 
+    # looking for the start and end position of a blast result
     for i in range(len(df)):
         ind_name_value = df.values[i][0]
         trinity_name_value = df.values[i][1]
@@ -32,7 +39,8 @@ def addRNA2RAD(outgroup_name, transcriptome, blast_result_txt, split_genes):
         ending_pos = df.values[i][9]
         print(ind_name_value, trinity_name_value,gene_name)
 
-### because it has duplicate, therefore, we run a loop to choose on value of the duplicates.
+        # choose a mapped region and extract the gene sequence from references (genome or transcritome).
+        ### because it has duplicate, therefore, we run a loop to choose on value of the duplicates.
         if gene_name != df.values[i][0].split("_g")[1]:
             file_name = split_genes + "/g" + str(df.values[i][0].split("_g")[1]) + "_aligned.fas"
 

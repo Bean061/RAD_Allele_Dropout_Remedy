@@ -1,11 +1,13 @@
-### This script is used for devide the nex file into different genes, based on the gene location.
+### s2: according to the gene partition file, the concatenated gene phylip output file (from ipyrad) were divided 
+### into different genes alignments by the “Concatenated2gene_phylip” function.
+
+### This script is used for devide the nex file into different genes, based on the gene position.
+
+#### Any questions, please contact Wenbin Zhou. wzhou10@ncsu.edu
+
 import os
 import argparse
 from Bio import SeqIO
-# from Loci_2_partition_nex import Loci2partition
-
-# Loci2partition("/Users/zhouwenbin/proj/allele_phasing/Torreya/partition_Torreya/M50.loci","/Users/zhouwenbin/proj/allele_phasing/Torreya/partition_Torreya/partition.nexus")
-
 
 def con2genes(output_partition, input_phylip_file_name):
     dir_path = os.path.dirname(output_partition)
@@ -15,7 +17,8 @@ def con2genes(output_partition, input_phylip_file_name):
         os.makedirs(output_genes_file)
 
     charset=[]
-    #with open ("/Users/zhouwenbin/proj/20genes/Partition.nex", "rU") as f:
+    ### read nex partition file line by line to extract the information of each locus position, including
+    ### the starting position and ending position.
     with open (output_partition, "rU") as f:
         for line in f:
             line=line.strip ()
@@ -27,7 +30,6 @@ def con2genes(output_partition, input_phylip_file_name):
     for c in charset:
         name = c.split(" ")[1]
         # print name
-    #    with open ("/Users/zhouwenbin/proj/20genes/"+ name +"_aligned.fas","w") as out:
         with open(output_genes_file + name + "_aligned.fas", "w") as out:
             for record in SeqIO.parse (input_phylip_file_name, "phylip"):
                 locus = c.split(" = ")[1]

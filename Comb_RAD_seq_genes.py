@@ -1,21 +1,25 @@
+### s3: combined all gene sequences from all individual into one master fasta file using the “combRADseq” function.
+
+#### Any questions, please contact Wenbin Zhou. wzhou10@ncsu.edu
+
 from Bio import SeqIO
 import os
 import argparse
 
 def combRADseq(genes_file):
-    # path = Path(os.path.dirname(genes_file))
-    # parent_path = path.parent
 
     output_BLAST = os.path.dirname(genes_file) + "/BLAST/"
     if os.path.isdir(output_BLAST) == False:
         os.makedirs(output_BLAST)
 
+    ### loop to combine all sequences from RAD-seq (every individual, every locus).
     for file in os.listdir(genes_file):
         fname = genes_file + "/" + file
         gene_name = file.split("_")[0]
         print(file)
         if file != ".DS_Store":
 
+            ### if the sequence from RAD-seq is missing data, then it will be excluded.
             for test in SeqIO.parse(fname,'fasta'):
                 if test.seq != len(test.seq) * "N" and test.seq != len(test.seq) * "n":
                     # print("test")
