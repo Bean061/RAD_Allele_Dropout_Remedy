@@ -49,6 +49,8 @@ It includes six steps as follows:
 
 6) realign the genes with new outgroup sequences using “mafft_genes” function.
 
+![ ](images/Fig.1_workflow.png)
+
 ## Usage
 
   This script is used to recapture loci in RAD-seq outgroup from RNA-seq or Genome data. It requires .loci file from ipyrad, .phy file from ipyrad, .fasta file from RNA-seq (Trinity) or Genomic data. You also need to define one outgroup name and output partition file name. '-i', '-o', '-iph', '-itr', '-og' are required arguments. The default output file will be generated at current working dirctory.
