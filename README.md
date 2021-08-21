@@ -49,7 +49,7 @@ It includes six steps as follows:
 
 6) realign the genes with new outgroup sequences using “mafft_genes” function.
 
-![ ](images/Fig.1_workflow.png)
+![ ](image/Fig.1_workflow.png)
 
 ## Usage
 
